@@ -192,7 +192,6 @@ public class Arquivo <T extends registros> {//obs tipos genericos sao interfaces
         byte lapide;
         byte[] ba;
         byte[] novoBA;
-        long position;
         int idProcurado = novoObj.getID();
 
         ParIDEndereco read = indiceDireto.read(idProcurado);/// procura o objeto da hash extensivel com os dados
@@ -200,7 +199,6 @@ public class Arquivo <T extends registros> {//obs tipos genericos sao interfaces
         arquivo.seek(posicao-1);/// muda o ponteiro do arquivo
 
         //pega a posicao do ponteiro
-        position = arquivo.getFilePointer();///pega o ponteiro
         lapide= arquivo.readByte();///LE O LAPIDE
         tam = arquivo.readInt();///LE O TAMANHO DO VETOR DE BYTES
 
@@ -237,7 +235,7 @@ public class Arquivo <T extends registros> {//obs tipos genericos sao interfaces
                     newPointer = arquivo.getFilePointer();
 
                     read = indiceDireto.read(idProcurado);
-                    read.setLocal(newPointer+1);
+                    read.setLocal(newPointer+1);/// set local atualiza o endereco esse +1 foi devido a um bug
                     indiceDireto.update(read);
 
 
