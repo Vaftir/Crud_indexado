@@ -1,6 +1,6 @@
 package com.example.index_crud;
 
-
+import aed3.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -11,13 +11,19 @@ public class main {
 
     public static void main(String[] args) {
 
+
         File f = new File("dados/livros/arquivo.db");
         f.delete();
         f = new File("dados/clientes/arquivo.db");
         f.delete();
+        f = new File("dados/livros/indicedireto.hash_c.db");
+        f.delete();
+        f = new File("dados/livros/indicedireto.hash_d.db");
+
 
         Arquivo<Cliente> arqCliente;
         Arquivo<Livro> arqLivro;
+        HashExtensivel<ParIDEndereco> indiceDireto;
 
 
 
@@ -26,6 +32,9 @@ public class main {
         Cliente c2 = new Cliente( "Marcio Cerviote de Nogueira","mcnogueirinha@gmail.com");
 
         try {
+
+
+
             Livro l = new Livro (
                     "Harry Potter e a camara secreta (Exclusivo)",
                     "J.K.Roling","9788576573008", 91.50F
@@ -79,6 +88,9 @@ public class main {
             arqLivro.update(l1);
             System.out.println();
             System.out.println(arqLivro.read(j));
+
+
+
 
         } catch (Exception e) {
             e.printStackTrace();
